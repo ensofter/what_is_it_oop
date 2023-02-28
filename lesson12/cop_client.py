@@ -10,9 +10,10 @@ class HardwareLoadHandler(AbstractLoadHandler):
         stat['cpu'] = cpu != ''
         request['stat'] = stat
         if cpu != '':
-            super().handle(request)
+            return super().handle(request)
         else:
             return False
+
 
 class BiosLoadHandler(AbstractLoadHandler):
     def handle(self, request: dict) -> bool:
@@ -23,7 +24,21 @@ class BiosLoadHandler(AbstractLoadHandler):
         stat['bios'] = bios != ''
         request['stat'] = stat
         if bios != '':
-            super().handle(request)
+            return super().handle(request)
+        else:
+            return False
+
+
+class DebuggerLoadHandler(AbstractLoadHandler):
+    def handle(self, request: dict) -> bool:
+        stat = request.get('stat')
+        if stat is None:
+            stat = {}
+        debugger = request.get('debugger')
+        stat['debugger'] = debugger != ''
+        request['stat'] = stat
+        if debugger != '':
+            return super().handle(request)
         else:
             return False
 
@@ -31,15 +46,16 @@ class BiosLoadHandler(AbstractLoadHandler):
 if __name__ == '__main__':
     hw_handler = HardwareLoadHandler()
     bios_handler = BiosLoadHandler()
+    debugger_handler = DebuggerLoadHandler()
 
-
-    hw_handler.set_next(bios_handler)
+    hw_handler.set_next(bios_handler).set_next(debugger_handler)
 
     request = {
         'cpu': 'Intel',
-        'bios': ''
+        'bios': 'Hello',
+        'debugger': 'World'
     }
 
-    hw_handler.handle(request)
+    print(hw_handler.handle(request))
 
     print(request)
