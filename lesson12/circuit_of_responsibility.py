@@ -23,7 +23,7 @@ class AbstractLoadHandler(LoadHandler):
         return handler
 
     @abstractmethod
-    def handle(self, request: Any) -> bool:
+    def handle(self, request: dict) -> bool:
         if self._next_handler:
             return self._next_handler.handle(request)
         return True
