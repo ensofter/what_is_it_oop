@@ -15,7 +15,7 @@ class CellphoneCompany(ABC):
         pass
 
     def do_call(self) -> str:
-        product = self.make_phone()
+        product: Cellphone = self.make_phone()
 
         # work with product
         result = product.call()
