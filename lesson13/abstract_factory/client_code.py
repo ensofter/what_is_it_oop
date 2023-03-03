@@ -1,5 +1,5 @@
-from lesson13.abstract_fabric import ElementFabric
-from lesson13.elements import LinuxElementsFactory, WindowsElementsFactory, MacOsElementsFactory
+from abstract_fabric import ElementFabric
+from elements import LinuxElementsFactory, WindowsElementsFactory, MacOsElementsFactory
 
 LINUX = 'linux'
 WINDOWS = 'windows'
