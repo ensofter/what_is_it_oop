@@ -41,8 +41,8 @@ class UserRepositoryMongoDb(UserRepository):
 
 class Controller:
 
-    def __init__(self, user_repo: UserRepository)
-    self.user_repo = user_repo
+    def __init__(self, user_repo: UserRepository):
+        self.user_repo = user_repo
 
 
 if __name__ == '__main__':
