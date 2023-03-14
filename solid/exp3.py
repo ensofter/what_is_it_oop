@@ -30,6 +30,20 @@ class Rectangle:
         return self.height * self.width
 
 
+class Square(Rectangle):
+
+    def __init__(self, size):
+        Rectangle.__init__(self, size, size)
+
+    @Rectangle.width.setter
+    def width(self, value):
+        self._h = self._w = value
+
+    @Rectangle.height.setter
+    def height(self, value):
+        self._h = self._w = value
+
+
 def use_it(rc: Rectangle):
     w = rc.width
     rc.height = 10
@@ -40,3 +54,9 @@ def use_it(rc: Rectangle):
 if __name__ == '__main__':
     rc = Rectangle(2, 3)
     use_it(rc)
+
+    square = Square(5)
+    print(square)
+    print(square.area)
+
+    use_it(square)
