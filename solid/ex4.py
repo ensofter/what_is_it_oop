@@ -126,5 +126,5 @@ if __name__ == '__main__':
     my_photocopier.print("Esse")
     my_photocopier.scan("Photo")
 
-    my_multi = MyMultifunctionMachine(Printer, Fax, Scaner)
+    my_multi = MyMultifunctionMachine(my_printer, my_fax, my_scanner)
     my_multi.scan("Report1!!")
