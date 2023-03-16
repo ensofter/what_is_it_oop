@@ -34,11 +34,15 @@ class RelationStorage(RelationBrowser):
 
 
 class Research:
-    def __init__(self, relations: RelationStorage):
-        self.relations = relations.relations
-        for i in self.relations:
-            if i[0].name == "John" and i[1] == Relationship.PARENT:
-                print(f"John is parent of {i[2].name}")
+    # def __init__(self, relations: RelationStorage):
+    #     self.relations = relations.relations
+    #     for i in self.relations:
+    #         if i[0].name == "John" and i[1] == Relationship.PARENT:
+    #             print(f"John is parent of {i[2].name}")
+
+    def __init__(self, browser: RelationBrowser):
+        for p in browser.find_all_children_of('John'):
+            print(f"John is parent of {p}")
 
 
 if __name__ == '__main__':
