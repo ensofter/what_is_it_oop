@@ -37,7 +37,7 @@ class FlyWeight:
 
     def process(self, unique: Unique):
         print(f'Отображаем общие данные: {self.__shared.company}, {self.__shared.position}'
-              f'и уникальныеЖ {unique.name}, {unique.pasport}')
+              f'и уникальные: {unique.name}, {unique.pasport}')
 
     def get_data(self) -> str:
         return self.__shared.company + '_' + self.__shared.position
@@ -75,10 +75,10 @@ def add_specialist_database(ff: FlyWeightFactory, company: str, position: str, n
 
 if __name__ == '__main__':
     shared_list: List[Shared] = \
-        (Shared('Microsoft', 'управляющий'),
+        [Shared('Microsoft', 'управляющий'),
          Shared('Google', 'андройд разработчик'),
          Shared('Google', 'веб разработчик'),
-         Shared('Apple', 'айос разработчик'))
+         Shared('Apple', 'айос разработчик')]
 
     factory = FlyWeightFactory(shared_list)
     factory.list_flyweight()
